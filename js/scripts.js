@@ -102,19 +102,19 @@ const songData = [
     }
   ]
 
-  //custom mcr markers - https://docs.mapbox.com/mapbox-gl-js/example/custom-marker-icons/
-  
-
   // markers 
   songData.forEach(function(songRecord){
     const popup = new mapboxgl.Popup().setText(
         `Song: ${songRecord['song']}`
+        `Cover or Original?: ${songRecord['song-type']}`
+        `Location: ${songRecord['city']}`
+        `Year Played: ${songRecord['year']}`
     );
-    new mapboxgl.Marker()
+    new mapboxgl.Marker(
+        let color = '#c41717'
+    )
     .setLngLat([songRecord.long, songRecord.lat])
     .setPopup(popup)
     .addTo(map)
 
   })
-
-  //about:config
