@@ -1,13 +1,3 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWFiYTAwIiwiYSI6ImNsZzVxaWltcTA1dnczaHFyc3NrZXc4N20ifQ.HHHdXxGVb4zlQcNg1CwEZg';
-
-const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/dark-v11', // style URL
-    center: [-98.4842, 39.0119], // starting position [lng, lat]
-    zoom: 1 // starting zoom
-    });   
-
 // data set of mcr songs that have only been played live once
 const songData = [
     {
@@ -102,17 +92,28 @@ const songData = [
     }
   ]
 
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYWFiYTAwIiwiYSI6ImNsZzVxaWltcTA1dnczaHFyc3NrZXc4N20ifQ.HHHdXxGVb4zlQcNg1CwEZg';
+
+const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+    style: 'mapbox://styles/mapbox/dark-v11', // style URL
+    center: [-98.4842, 39.0119], // starting position [lng, lat]
+    zoom: 1 // starting zoom
+    });   
+
+
   // markers 
   songData.forEach(function(songRecord){
     const popup = new mapboxgl.Popup().setText(
-        `Song: ${songRecord['song']}`
-        `Cover or Original?: ${songRecord['song-type']}`
-        `Location: ${songRecord['city']}`
-        `Year Played: ${songRecord['year']}`
+        `Song: ${songRecord['song']}  |  
+        Cover or Original?: ${songRecord['song-type']}  |  
+        Location: ${songRecord['city']}  |  
+        Year Played: ${songRecord['year']}`
     );
-    new mapboxgl.Marker(
-        let color = '#c41717'
-    )
+    new mapboxgl.Marker({
+        color: '#c41717',
+    })
     .setLngLat([songRecord.long, songRecord.lat])
     .setPopup(popup)
     .addTo(map)
